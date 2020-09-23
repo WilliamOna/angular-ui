@@ -15,12 +15,12 @@
             </div>
         </div>
         <div class='table-responsive'>
-            <table class='table'>
+            <table class='table' *ngIf='products && products.length'>
                 <thead>
                     <tr>
                         <th>
-                            <button class='btn btn-primary'>
-                                Show Image
+                            <button class='btn btn-primary' (click)='toggleImage()'>
+                                {{showImage? 'Hide' : 'Show' }} Image
                             </button>
                         </th>
                         <th>Image</th>
@@ -33,7 +33,7 @@
                 <tbody>
                     <tr *ngFor='let product of products'>
                         <td></td>
-                        <td><img src='https://picsum.photos/id/{{product.id}}/50'></td>
+                        <td><img src='https://picsum.photos/id/{{product.id}}/50' *ngIf='showImage'></td>
                         <td>{{product.author}}</td>
                         <td>{{product.format | uppercase}}</td>
                         <td>{{product.height + ' x ' +product.width}}</td>

@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 export class ProductComponent implements OnInit {
   pageTitle: string = 'List of Products';
   icon: string = 'https://picsum.photos/id/77/30';
+  showImage: boolean = false;
   products: any[] = [
     {
       format: 'jpeg',
@@ -69,6 +70,10 @@ export class ProductComponent implements OnInit {
       post_url: 'https://unsplash.com/photos/1DkWWN1dr-s',
     },
   ];
+
+  toggleImage(): void {
+    this.showImage = !this.showImage;
+  }
   ngOnInit(): void {
     console.log('rendering Product Component');
   }
