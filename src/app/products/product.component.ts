@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { IProduct } from './product';
 
 @Component({
   selector: 'app-product',
@@ -8,7 +9,9 @@ export class ProductComponent implements OnInit {
   pageTitle: string = 'List of Products';
   icon: string = 'https://picsum.photos/id/77/30';
   showImage: boolean = false;
-  products: any[] = [
+  //   listFilter: string;
+  _listFilter: string;
+  products: IProduct[] = [
     {
       format: 'jpeg',
       width: 5616,
@@ -70,6 +73,24 @@ export class ProductComponent implements OnInit {
       post_url: 'https://unsplash.com/photos/1DkWWN1dr-s',
     },
   ];
+  filteredProducts: IProduct[] = this.products;
+
+  get listFilter(): string {
+    return this._listFilter;
+  }
+
+  set listFilter(value: string) {
+    this._listFilter = value;
+    this.filteredProducts = this._listFilter
+      ? this.performFilter(this._listFilter.toLowerCase())
+      : this.products;
+  }
+
+  performFilter(filterBy: string): IProduct[] {
+    return this.products.filter((product: IProduct) =>
+      product.author.toLowerCase().includes(filterBy)
+    );
+  }
 
   toggleImage(): void {
     this.showImage = !this.showImage;
