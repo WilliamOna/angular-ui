@@ -31,13 +31,13 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                    <tr *ngFor='let product of products'>
                         <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td><img src='https://picsum.photos/id/{{product.id}}/50'></td>
+                        <td>{{product.author}}</td>
+                        <td>{{product.format}}</td>
+                        <td>{{product.height + ' x ' +product.width}}</td>
+                        <td>{{product.author_url}}</td>
                     </tr>
                 </tbody>
             </table>
