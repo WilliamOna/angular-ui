@@ -10,12 +10,14 @@ export class ProductComponent implements OnInit {
   pageTitle: string = 'List of Products';
   icon: string = 'https://picsum.photos/id/77/30';
   showImage: boolean = false;
-  //   listFilter: string;
+
   _listFilter: string;
-  products: IProduct[] = this.productService.getProducts();
+  products: IProduct[] = [];
   filteredProducts: IProduct[] = this.products;
 
-  constructor(private productService: ProductService) {}
+  constructor(private productService: ProductService) {
+    this.filteredProducts = this.products;
+  }
 
   get listFilter(): string {
     return this._listFilter;
@@ -38,6 +40,14 @@ export class ProductComponent implements OnInit {
     this.showImage = !this.showImage;
   }
   ngOnInit(): void {
-    console.log('rendering Product Component');
+    this.productService.getProducts().subscribe({
+      next: (data) => {
+        this.products = data;
+        this.filteredProducts = data;
+      },
+    });
+
+    // think about this as very very very very very roughly analagous to:
+    //fetch('###').then(response=>response.json()).then((data)=>console.log(data))
   }
 }

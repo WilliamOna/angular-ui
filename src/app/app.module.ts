@@ -5,10 +5,11 @@ import { AppComponent } from './app.component';
 import { ProductComponent } from './products/product.component';
 import { EllipsifyPipe } from './products/ellipsify.pipe';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent, ProductComponent, EllipsifyPipe],
-  imports: [BrowserModule, FormsModule],
+  imports: [BrowserModule, FormsModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
 })
