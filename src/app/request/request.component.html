@@ -1,1 +1,9 @@
-<p>request works!</p>
+<div>
+    <button (click)="toggle()" id='toggle-button'>TOGGLE</button>
+        <div [hidden] ="!isVisible" id="info">
+            
+            requestId: {{requestId}}<br>
+            itemType: {{itemType}}<br>
+            numberOfItemsRequest: {{numberOfItemsRequest}}<br>            
+        </div>
+</div>
